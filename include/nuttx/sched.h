@@ -605,8 +605,12 @@ struct tcb_s
 
 #ifdef CONFIG_PRIORITY_INHERITANCE
 #if CONFIG_SEM_NNESTPRIO > 0
-  uint8_t  npend_reprio;             /* Number of nested reprioritizations  */
-  uint8_t  pend_reprios[CONFIG_SEM_NNESTPRIO];
+  uint8_t  nsem_boosts;                  /* Number of semaphores that are
+                                            currently causing thread to be
+                                            boosted  */
+  struct semboost_s sem_boosts[CONFIG_SEM_NNESTPRIO]; /* Semaphores and their
+                                            boost priority that currently are
+                                            boosting this task */
 #endif
   uint8_t  base_priority;                /* "Normal" priority of the thread */
 #endif

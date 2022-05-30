@@ -112,6 +112,15 @@ typedef struct sem_s sem_t;
     {(c)}                        /* semcount */
 #endif
 
+
+#ifdef CONFIG_PRIORITY_INHERITANCE
+struct semboost_s
+{
+  FAR sem_t *sem;
+  uint8_t priority;
+};
+#endif
+
 /****************************************************************************
  * Public Data
  ****************************************************************************/
